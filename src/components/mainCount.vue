@@ -1,24 +1,23 @@
 <template>
   <div class="hello">
-
-<p>输入数字</p>
-  <button @click="inc" >add</button>
-  <span>result:{{count}}</span>
-  <button @click="dec" >dec</button>
+       <span>输入 Counter 的个数：</span>
+    <input type="number" v-model.number="count" />
+    <counterGroup :times="count" />
   </div>
 </template>
 
 <script>
-
+ import counterGroup from "./counterGroup.vue";
 export default {
-  name: 'counter',
+   
+  name: 'mainCount',
   data(){
   return{
    count:0,
-   sum:0
   }
   },
    components: {
+      counterGroup
   },
   props: {
   },
@@ -26,14 +25,7 @@ export default {
 
   		},
   methods: {
-  			//增加
-  			inc() {
-  				//const count = this.count
-  				this.count++;
-  			},
-  			//减少
-  			dec() {
-  				this.count--;
+  		
         }
   		}
 }

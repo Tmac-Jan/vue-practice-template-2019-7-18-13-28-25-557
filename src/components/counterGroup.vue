@@ -1,41 +1,36 @@
 <template>
-  <div class="hello">
-
-<p>输入数字</p>
-  <button @click="inc" >add</button>
-  <span>result:{{count}}</span>
-  <button @click="dec" >dec</button>
+  <div >
+ <Counter v-for="n in count" :key="n" />
   </div>
 </template>
 
-<script>
-
+<script> 
+ import counter from "./counter.vue";
 export default {
-  name: 'counter',
+  name: 'counterGroup',
   data(){
   return{
-   count:0,
-   sum:0
+   count:1
   }
   },
-   components: {
+  components: {
+    counter
   },
   props: {
+    times:Number
   },
   computed: {
-
   		},
   methods: {
-  			//增加
-  			inc() {
-  				//const count = this.count
-  				this.count++;
-  			},
-  			//减少
-  			dec() {
-  				this.count--;
+  			inc(){
+          this.count++;
+          this.$emit('add-parent-total',this.count);
+        },
+        dec(){
+          this.count--;
+          this.$emit('add-parent-total',this.count);
         }
-  		}
+  		},
 }
 </script>
 
@@ -56,3 +51,6 @@ a {
   color: #42b983;
 }
 </style>
+
+
+
