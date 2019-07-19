@@ -2,6 +2,7 @@
   <div class="hello">
 
 <p>输入数字</p>
+   <p><input v-model="count" placeholder="input number" type="number"/></p>
   <button @click="inc" >add</button>
   <span>result:{{count}}</span>
   <button @click="dec" >dec</button>
