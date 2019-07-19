@@ -15,7 +15,6 @@ export default {
   data(){
   return{
    count:0,
-   sum:0
   }
   },
    components: {
@@ -24,16 +23,21 @@ export default {
   },
   computed: {
 
-  		},
+      },
+      beforeDestroy(){
+          this.$emit('destroyItemSum', this.count);
+      },
   methods: {
   			//增加
   			inc() {
   				//const count = this.count
-  				this.count++;
+          this.count++;
+           this.$emit('addSum',1);
   			},
   			//减少
   			dec() {
-  				this.count--;
+          this.count--;
+          this.$emit('addSum', -1);
         }
   		}
 }

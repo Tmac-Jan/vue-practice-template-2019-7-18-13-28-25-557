@@ -1,32 +1,33 @@
-<template>
+  <template>
   <div class="hello">
-       <span>输入 Counter 的个数：</span>
-    <input type="number" v-model.number="count" />
-    <counterGroup :times="count" />
+
+<p>sum:{{counterSum}}</p>
   </div>
+  
 </template>
 
 <script>
- import counterGroup from "./counterGroup.vue";
+
 export default {
-   
-  name: 'mainCount',
+  name: 'countersum',
   data(){
   return{
-   count:0,
+  
   }
   },
    components: {
-      counterGroup
   },
   props: {
+    counterSum:Number
   },
   computed: {
 
-  		},
+      },
+      beforeDestroy(){
+        
+      },
   methods: {
   		
-        }
   		}
 }
 </script>

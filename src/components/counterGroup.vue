@@ -1,20 +1,24 @@
 <template>
   <div >
- <Counter v-for="n in count" :key="n" />
+ <counter v-for="n in times" :key="n" @addSum="addTotal" @destroyItemSum="destroyTotal"/>
+ <counter-sum :counterSum="sum"/>
   </div>
 </template>
 
 <script> 
  import counter from "./counter.vue";
+ import counterSum from "./counterSum.vue";
 export default {
   name: 'counterGroup',
   data(){
   return{
-   count:1
+   count:10,
+   sum:0
   }
   },
   components: {
-    counter
+    counter,
+    counterSum
   },
   props: {
     times:Number
@@ -22,14 +26,12 @@ export default {
   computed: {
   		},
   methods: {
-  			inc(){
-          this.count++;
-          this.$emit('add-parent-total',this.count);
-        },
-        dec(){
-          this.count--;
-          this.$emit('add-parent-total',this.count);
-        }
+    addTotal(itemValue){
+        this.sum+=itemValue;
+    },
+    destroyTotal(itemValue){
+      this.sum-=itemValue;
+    }
   		},
 }
 </script>
